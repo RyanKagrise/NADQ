@@ -1,5 +1,24 @@
 'use strict';
 
+const faker = require('faker');
+
+//faker.animal.type() => Question
+//faker.address.cityName() => Topic
+//faker.name.findName() => Username
+//faker.internet.email() => Email
+//faker.lorum.sentence() => Answer/Comments
+//aA1! => Password
+
+function fakerFunction (num) {
+  const array = []
+  for (let i=0; i<num; i++) {
+    const object = {}
+    object.content = 
+    array.push(object);
+  }
+  return array;
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*

@@ -27,26 +27,6 @@ router.get('/signup', csrfProtection, (req, res) => {
     });
 });
 
-router.get('/login', csrfProtection, (req, res) => {
-    res.render('user-login', {
-        title: 'Login',
-        csrfToken: req.csrfToken(),
-    })
-});
-
-const loginValidator = [
-    check('emailAddress')
-    .exists({
-        checkFalsy: true
-    })
-    .withMessage('Please provide a correct email address!'),
-    check('password')
-    .exists({
-        checkFalsy: true
-    })
-    .withMessage('Please provide a correct password value!')
-];
-
 const userValidators = [
     check("userName")
     .exists({
@@ -81,7 +61,7 @@ const userValidators = [
     .custom((email) => {
         return db.User.findOne({
                 where: {
-                    emailAddress: value
+                    emailAddress: email
                 }
             })
             .then((user) => {
@@ -118,6 +98,67 @@ const userValidators = [
         return true;
     })
 ]
+
+
+
+router.post('/signup', csrfProtection, userValidators,
+asyncHandler(async (req, res) => {
+    const {
+        emailAddress,
+        userName,
+        password
+    } = req.body;
+
+    const user = db.User.build({
+        emailAddress,
+        userName: userName.trim(),
+    });
+
+    const validatorErrors = validationResult(req);
+
+    console.log(req.body)
+
+    if (validatorErrors.isEmpty()) {
+        const hashedPassword = await bcrypt.hash(password, 12);
+        user.hashedPassword = hashedPassword;
+
+        await user.save();
+
+        loginUser(req, res, user);
+        res.redirect('/');
+    } else {
+        const errors = validatorErrors.array().map((error => error.msg))
+
+        console.log(errors)
+
+        res.render('user-signup', {
+            title: "Sign Up",
+            user,
+            errors,
+            csrfToken: req.csrfToken()
+        });
+    }
+}));
+
+router.get('/login', csrfProtection, (req, res) => {
+    res.render('user-login', {
+        title: 'Login',
+        csrfToken: req.csrfToken(),
+    })
+});
+
+const loginValidator = [
+    check('emailAddress')
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage('Please provide a correct email address!'),
+    check('password')
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage('Please provide a correct password value!')
+];
 
 router.post('/login', csrfProtection, loginValidator, asyncHandler(async (req, res) => {
     const {
@@ -157,40 +198,6 @@ router.post('/login', csrfProtection, loginValidator, asyncHandler(async (req, r
     });
 }))
 
-router.post('/sign-up', csrfProtection, userValidators,
-    asyncHandler(async (req, res) => {
-        const {
-            emailAddress,
-            userName,
-            password
-        } = req.body;
-
-        const user = db.User.build({
-            emailAddress,
-            userName,
-        });
-
-        const validatorErrors = validationResult(req);
-
-        if (validatorErrors.isEmpty()) {
-            const hashedPassword = await bcrypt.hash(password, 12);
-            user.hashedPassword = hashedPassword;
-
-            await user.save();
-
-            loginUser(req, res, user);
-            res.redirect('/');
-        } else {
-            const errors = validatorErrors.array().map((error => error.msg))
-
-            res.render('user-signup', {
-                title: "Sign Up",
-                user,
-                errors,
-                csrfToken: req.csrfToken()
-            });
-        }
-    }));
 
 router.post('/logout', (req, res) => {
     logoutUser(req, res);

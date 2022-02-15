@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 /* GET users listing. */
-router.get('/users/login', csrfProtection, (req, res) => {
+router.get('/login', csrfProtection, (req, res) => {
   res.render('userLogin', {
     title:'Login',
     csrfToken: req.csrfToken(),

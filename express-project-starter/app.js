@@ -8,9 +8,12 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const { restoreUser } = require('./auth');
+
+const { v4:uuidv4 } = require('uuid')
 
 const app = express();
-
+const secret = uuidv4();
 // view engine setup
 app.set('view engine', 'pug');
 
@@ -25,12 +28,14 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    secret: 'superSecret',
+    secret: `${secret}`,
     store,
     saveUninitialized: false,
     resave: false,
   })
 );
+
+app.use(restoreUser);
 
 // create Session table if it doesn't already exist
 store.sync();

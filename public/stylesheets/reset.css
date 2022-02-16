@@ -32,3 +32,14 @@ h1 {
   margin: 5px;
   text-align: center;
 }
+
+.nav-bar {
+  display: flex;
+  padding: 10px 0px;
+  height: 45px;
+  width: 100%;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}

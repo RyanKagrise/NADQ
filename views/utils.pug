@@ -20,3 +20,6 @@ mixin question(question)
       p.
           userId = #{question.userId}
           topicId = #{question.topicId}
+
+mixin topic(topic)
+      a(href='/topics/#{topic.id}') #{topic.name}

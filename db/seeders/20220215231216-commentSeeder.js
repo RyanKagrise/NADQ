@@ -13,8 +13,8 @@ function fakerFunction(num) {
     const array = []
     for (let i = 0; i < num; i++) {
         const object = {}
-        object.content = faker.animal.type();
-        object.topicId = Math.ceil(Math.random() * 10)
+        object.content = faker.lorem.sentence();
+        object.answerId = Math.ceil(Math.random() * 20)
         object.userId = Math.ceil(Math.random() * 20)
         array.push(object);
     }
@@ -29,9 +29,9 @@ module.exports = {
 
           Example:
           */
-        const question = fakerFunction(20);
+        const comment = fakerFunction(50);
 
-        return queryInterface.bulkInsert('Questions', question, {});
+        return queryInterface.bulkInsert('Comments', comment, {});
     },
 
     down: (queryInterface, Sequelize) => {
@@ -41,6 +41,6 @@ module.exports = {
 
           Example:
           */
-       return queryInterface.bulkDelete('Questions', null, {});
+       return queryInterface.bulkDelete('Comments', null, {});
     }
 };

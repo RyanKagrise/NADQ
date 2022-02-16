@@ -14,3 +14,10 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       textarea(id=fieldName name=fieldName class='form-control' rows='5')= fieldValue
     else
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
+
+mixin question(question)
+    div(class="question-group")
+        h3 content = #{question.content}
+        p.
+            userId = #{question.userId}
+            topicId = #{question.topicId}

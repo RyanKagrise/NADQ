@@ -40,16 +40,8 @@ const questionValidators = [
 
 
 
-router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-    const questionId = req.params.id;
-    const content = await db.Question.findByPk(questionId);
-    res.render('question', {
-        content,
-        csrfToken: req.csrfToken(),
-    })
-}));
 
-router.post('/search', csrfProtection,
+    router.post('/search', csrfProtection,
     asyncHandler(async (req, res) => {
         const {
             search,
@@ -71,25 +63,25 @@ router.post('/search', csrfProtection,
         });
     }));
 
-router.post('/', csrfProtection, questionValidators, asyncHandler(async (req, res) => {
-    const {
-        content,
-        topicSelector,
-    } = req.body;
+    router.post('/', csrfProtection, questionValidators, asyncHandler(async (req, res) => {
+        const {
+            content,
+            topicSelector,
+        } = req.body;
 
-    const question = db.Question.build({
-        content,
-        topicId: topicSelector,
-        userId: res.locals.user.id,
-    })
+        const question = db.Question.build({
+            content,
+            topicId: topicSelector,
+            userId: res.locals.user.id,
+        })
 
-    const validatorErrors = validationResult(req);
+        const validatorErrors = validationResult(req);
 
-    if(validatorErrors.isEmpty()) {
-        await question.save();
-        res.redirect(`/questions/${question.id}`)
-    } else {
-        const errors = validatorErrors.array().map((error => error.msg))
+        if(validatorErrors.isEmpty()) {
+            await question.save();
+            res.redirect(`/questions/${question.id}`)
+        } else {
+            const errors = validatorErrors.array().map((error => error.msg))
 
         console.log(errors)
 
@@ -102,6 +94,14 @@ router.post('/', csrfProtection, questionValidators, asyncHandler(async (req, re
 
 }))
 
+router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    const questionId = req.params.id;
+    const question = await db.Question.findByPk(questionId);
+    res.render('question', {
+        question,
+        csrfToken: req.csrfToken(),
+    })
+}));
 
 
 

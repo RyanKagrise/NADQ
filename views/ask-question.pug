@@ -1,0 +1,14 @@
+extends nav-bar
+
+include utils
+
+block name
+  div(class="form-container")
+    +validationErrorSummary(errors)
+    form(action=`/questions` method='post')
+      +csurf(csrfToken)
+      textarea(class='question-text' type='text' name='content')
+      select(name='topicSelector' required)
+        each topic in topics
+          option(value=topic.id) #{topic.name}
+      button(class='add-question' type='submit') Submit

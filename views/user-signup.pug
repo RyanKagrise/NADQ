@@ -6,7 +6,7 @@ block name
     div(class="form-container")
         +validationErrorSummary(errors)
         form(action='/users/signup' method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
+            +csurf(csrfToken)
             +field('Username', 'userName', user.userName)
             +field('Email Address', 'emailAddress', user.emailAddress)
             +field('Password', 'password', user.password, 'password')

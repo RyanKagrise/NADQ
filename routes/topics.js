@@ -1,6 +1,6 @@
 const express = require("express");
 const db = require("../db/models");
-const { asyncHandler } = require("./utils");
+const { asyncHandler, csrfProtection } = require("./utils");
 
 const router = express.Router();
 
@@ -9,11 +9,11 @@ const router = express.Router();
 //     res.render("topics");
 // });
 
-router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
+router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res) => {
     const topicId = req.params.id;
     const topic = await db.Topic.findByPk(topicId);
     const questions = await db.Question.findAll({ where: { topicId } });
-    res.render("topics", { topicName: topic.name, topicId, questions });
+    res.render("topics", { topicName: topic.name, topicId, questions, csrfToken: req.csrfToken() });
 }));
 
 

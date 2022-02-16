@@ -1,4 +1,5 @@
 
+
 mixin validationErrorSummary(errors)
   if errors
     div(class='alert alert-danger' role='alert')
@@ -24,4 +25,8 @@ mixin question(question)
           topicId = #{question.topicId}
 
 mixin topic(topic)
-      a(href='/topics/#{topic.id}') #{topic.name}
+      a(href=href=`/topics/${topic.id}`) #{topic.name}
+
+
+mixin csurf(csrfToken)
+    input(type='hidden' name='_csrf' value=csrfToken)

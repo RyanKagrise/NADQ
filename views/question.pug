@@ -1,0 +1,11 @@
+extends nav-bar
+
+include utils
+
+block name
+    +csurf(csrfToken)
+    div
+      p.
+        #{question.content}
+        #{topic.name}
+        #{user.userName}

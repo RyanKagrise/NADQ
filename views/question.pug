@@ -1,6 +1,10 @@
 extends nav-bar
 
-
+include utils
 
 block name
-    div #{question.content}
+    +csurf(csrfToken)
+    div
+      p.
+        #{question.content}
+        #{question.topicId}

@@ -12,12 +12,16 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
     label(for=fieldName)= labelText
     if fieldType === 'textarea'
       textarea(id=fieldName name=fieldName class='form-control' rows='5')= fieldValue
+      br
     else
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
+      br
 
 mixin question(question)
-    div(class="question-group")
-        h3 content = #{question.content}
-        p.
-            userId = #{question.userId}
-            topicId = #{question.topicId}
+      h3 content = #{question.content}
+      p.
+          userId = #{question.userId}
+          topicId = #{question.topicId}
+
+mixin topic(topic)
+      a(href='/topics/#{topic.id}') #{topic.name}

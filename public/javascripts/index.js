@@ -1,3 +1,5 @@
-window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+
+
+window.addEventListener('DOMContentLoaded', (e) => {
+    const logoutButtons = document.querySelector('.logout-button');
 })

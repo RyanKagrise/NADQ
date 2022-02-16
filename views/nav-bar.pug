@@ -1,5 +1,10 @@
 extends layout
 
 block content
-    a(href='/' ) Log Out
+    nav(class='nav-bar')
+        a(href='/') Home
+        form(class='search-bar' action='/questions/search' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            input(type='search' placeholder='Search Questions Dummy' name='search' id='search')
+        a(href='/users/logout') Log Out
     block name

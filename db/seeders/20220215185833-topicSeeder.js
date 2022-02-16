@@ -9,36 +9,35 @@ const faker = require('faker');
 //faker.lorum.sentence() => Answer/Comments
 //aA1! => Password
 
-function fakerFunction (num) {
-  const array = []
-  for (let i=0; i<num; i++) {
-    const object = {}
-    object.name = faker.address.cityName();
-    array.push(object);
-  }
-  return array;
+function fakerFunction(num) {
+    const array = []
+    for (let i = 0; i < num; i++) {
+        const object = {}
+        object.name = faker.address.cityName();
+        array.push(object);
+    }
+    return array;
 }
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    up: (queryInterface, Sequelize) => {
+        /*
+          Add altering commands here.
+          Return a promise to correctly handle asynchronicity.
 
-      Example:
-      */
-     const topic = fakerFunction(10);
+          Example:
+          */
+        const topic = fakerFunction(10);
 
-      return queryInterface.bulkInsert('Topic', topic, {});
-  },
+        return queryInterface.bulkInsert('Topics', topic, {});
+    },
 
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
+    down: (queryInterface, Sequelize) => {
+        /*
+          Add reverting commands here.
+          Return a promise to correctly handle asynchronicity.
 
-      */
-      Example:
-      return queryInterface.bulkDelete('Topic', null, {});
-  }
+          */
+        return queryInterface.bulkDelete('Topics', null, {});
+    }
 };

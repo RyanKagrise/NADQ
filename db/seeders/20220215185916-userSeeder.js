@@ -34,7 +34,7 @@ module.exports = {
       */
       const user = fakerFunction(20);
 
-      return queryInterface.bulkInsert('User', user, {});
+      return queryInterface.bulkInsert('Users', user, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -44,6 +44,6 @@ module.exports = {
 
       Example:
       */
-      return queryInterface.bulkDelete('User', null, {});
+      return queryInterface.bulkDelete('Users', null, {});
   }
 };

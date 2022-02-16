@@ -3,7 +3,8 @@ extends layout
 block content
     nav(class='nav-bar')
         a(href='/') Home
-        form(class='search-bar' action='/questions/search' method='get')
-            input(type='search' placeholder='Search Questions Dummy')
+        form(class='search-bar' action='/questions/search' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            input(type='search' placeholder='Search Questions Dummy' name='search' id='search')
         a(href='/users/logout') Log Out
     block name

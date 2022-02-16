@@ -1,0 +1,9 @@
+extends nav-bar
+
+include utils
+
+block name
+    ul
+        each item in questions
+            li(class='question-block')
+                +question(item)

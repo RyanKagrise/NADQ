@@ -1,16 +1,18 @@
-extends layout.pug
+extends center-box
 
-include utils.pug
+include utils
 
-block content
-  +validationErrorSummary(errors)
-  form(action='/users/signup' method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Username', 'userName', user.userName)
-    +field('Email Address', 'emailAddress', user.emailAddress)
-    +field('Password', 'password', user.password, 'password')
-    +field('Confirm Password', 'confirmPassword', '', 'password')
-    div(class='submit-container')
-      button(type='submit' class='btn') Sign Up
-  div
-    p: a(href='/users/login') Already have an account?
+block name
+    div(class="form-container")
+        +validationErrorSummary(errors)
+        form(action='/users/signup' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            +field('Username', 'userName', user.userName)
+            +field('Email Address', 'emailAddress', user.emailAddress)
+            +field('Password', 'password', user.password, 'password')
+            +field('Confirm Password', 'confirmPassword', '', 'password')
+            br
+            div(class='submit-container')
+                button(type='submit' class='btn') Sign Up
+            div
+                p: a(href='/users/login') Already have an account?

@@ -7,5 +7,5 @@ block name
     h3 topic id = #{topicId}
     ul
         each item in questions
-            +question(item)
-
+            li(class='question-block')
+                +question(item)

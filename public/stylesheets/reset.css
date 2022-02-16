@@ -25,3 +25,10 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
+
+
+.question-block {
+  border: 2px solid black;
+  margin: 5px;
+  text-align: center;
+}

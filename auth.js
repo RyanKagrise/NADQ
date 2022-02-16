@@ -7,7 +7,8 @@ const loginUser = (req, res, user) => {
 };
 
 const logoutUser = (req, res) => {
-    delete req.session.auth;
+  delete req.session.auth;
+  res.redirect('/')
 };
 
 const requireAuth = (req, res, next) => {

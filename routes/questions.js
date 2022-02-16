@@ -14,18 +14,39 @@ const db = require("../db/models");
 
 const router = express.Router();
 
-const userValidators = [
-    check("questionPrompt")
-    .exists({
-        checkFalsy: true
+
+router.get('/', csrfProtection, asyncHandler(async(req, res) => {
+
+    const topics = await db.Topic.findAll();
+
+
+    res.render('ask-question', {
+        topics,
+        csrfToken: req.csrfToken(),
     })
-    .withMessage("Please provide a value for the questionPrompt field!"),
-];
+}))
+
+const questionValidators = [
+    check("content")
+        .exists({
+            checkFalsy: true
+        })
+        .withMessage("Please provide a value for the questionPrompt field!")
+        .isLength({
+            max: 255
+        })
+        .withMessage("The question must be less than 255 characters dummy!"),
+    ];
 
 
 
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-
+    const questionId = req.params.id;
+    const content = await db.Question.findByPk(questionId);
+    res.render('question', {
+        content,
+        csrfToken: req.csrfToken(),
+    })
 }));
 
 router.post('/search', csrfProtection,
@@ -45,11 +66,47 @@ router.post('/search', csrfProtection,
         console.log(questions);
 
         res.render('question-search', {
-            questions
+            questions,
+            csrfToken: req.csrfToken(),
         });
     }));
 
-router.post('/:id(\\d+)', csrfProtection);
+router.post('/', csrfProtection, questionValidators, asyncHandler(async (req, res) => {
+    const {
+        content,
+        topicSelector,
+    } = req.body;
+
+    const question = db.Question.build({
+        content,
+        topicId: topicSelector,
+        userId: res.locals.user.id,
+    })
+
+    const validatorErrors = validationResult(req);
+
+    if(validatorErrors.isEmpty()) {
+        await question.save();
+        res.redirect(`/questions/${question.id}`)
+    } else {
+        const errors = validatorErrors.array().map((error => error.msg))
+
+        console.log(errors)
+
+        res.render('ask-question', {
+            question,
+            errors,
+            csrfToken: req.csrfToken(),
+        })
+    }
+
+}))
+
+
+
+
+
+//router.post('/:id(\\d+)', csrfProtection);
 
 
 

@@ -1,10 +1,13 @@
 extends layout
 
+include utils
+
 block content
     nav(class='nav-bar')
         a(href='/') Home
+        a(href='/questions') Questions
         form(class='search-bar' action='/questions/search' method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
+            +csurf(csrfToken)
             input(type='search' placeholder='Search Questions Dummy' name='search' id='search')
         a(href='/users/logout') Log Out
     block name

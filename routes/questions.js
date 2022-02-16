@@ -75,6 +75,7 @@ const questionValidators = [
             userId: res.locals.user.id,
         })
 
+
         const validatorErrors = validationResult(req);
 
         if(validatorErrors.isEmpty()) {
@@ -97,8 +98,13 @@ const questionValidators = [
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
+    const user = await db.User.findByPk(question.userId);
+    const topic = await db.Topic.findByPk(question.topicId);
+
     res.render('question', {
         question,
+        user,
+        topic,
         csrfToken: req.csrfToken(),
     })
 }));

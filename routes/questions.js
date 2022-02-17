@@ -24,7 +24,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
         topics,
         csrfToken: req.csrfToken(),
     })
-}))
+}));
 
 const questionValidators = [
     check("content")
@@ -37,9 +37,6 @@ const questionValidators = [
         })
         .withMessage("The question must be less than 255 characters dummy!"),
     ];
-
-
-
 
     router.post('/search', csrfProtection,
     asyncHandler(async (req, res) => {
@@ -100,11 +97,13 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const question = await db.Question.findByPk(questionId);
     const user = await db.User.findByPk(question.userId);
     const topic = await db.Topic.findByPk(question.topicId);
+    const currentUserId = res.locals.user.id;
 
     res.render('question', {
         question,
         user,
         topic,
+        currentUserId,
         csrfToken: req.csrfToken(),
     })
 }));

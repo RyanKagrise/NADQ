@@ -4,8 +4,8 @@ include utils
 
 block name
     +csurf(csrfToken)
-    div
-      p.
-        #{question.content}
-        #{topic.name}
-        #{user.userName}
+    div(id=`question-${question.id}` class="question-container")
+        +question(question, topic, user)
+        if user.id != currentUserId
+            button.answer-button Answer
+            div#answer-block

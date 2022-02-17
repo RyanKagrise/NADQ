@@ -18,11 +18,17 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
       br
 
+mixin topicQuestions(question)
+    a(href=`/questions/${question.id}`) content = #{question.content}
+    p.
+        userId = #{question.userId}
+        topicId = #{question.topicId}
+
 mixin question(question)
-      h3 content = #{question.content}
-      p.
-          userId = #{question.userId}
-          topicId = #{question.topicId}
+    a(href=`/questions/${question.id}`) #{question.content}
+    p.
+       topicName = #{question.Topic.name}
+       userName = #{question.User.userName}
 
 mixin topic(topic)
       a(href=href=`/topics/${topic.id}`) #{topic.name}

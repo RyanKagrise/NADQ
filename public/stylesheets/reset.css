@@ -1,6 +1,6 @@
 body {
     padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "apercu", sans-serif;
 }
 
 a {
@@ -26,25 +26,86 @@ span,
 body,
 header,
 nav {
-    font-size: 1rem;
     color: inherit;
     background-color: transparent;
     margin: 0;
     padding: 0;
     outline: 0;
     font-weight: normal;
+    list-style-position: inside;
+}
+
+body {
+    background-color: #1f2833;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 4rem;
+}
+
+.splash-box {
+    display: flex;
+    height: 50%;
+    width: 50%;
+    box-sizing: border-box;
+    margin: auto;
+    border-radius: 1em;
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    position: absolute;
+    top: 25%;
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border-right: 5px solid #45a29e;
+    text-align: center;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.splash-container > h1 {
+    font-weight: bold;
+    color: #66fcf1;
+}
+
+.splash-container > p {
+    font-size: medium;
 }
 
 .form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    width: 50%;
+    margin: 0px 10px;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-.login-link {
+.form-group label, textarea, input {
+    margin-bottom: 5px;
+}
+
+.form-group > input {
+   padding-top: 5px;
+   margin-top: 5px;
+}
+
+.form-container > h2 {
+    font-weight: bold;
+    font-size: 21px;
+    margin: 5px;
+    color: #c5c6c7;
+}
+
+.other-option {
     display: flex;
     justify-content: center;
 }
@@ -83,4 +144,31 @@ h1 {
     border: 1px solid black;
     margin-bottom: 5px;
     box-sizing: border-box;
+}
+
+.alert{
+    margin-bottom: 10px;
+    overflow: auto;
+    font-size: small;
+    color: #d10f08;
+}
+
+.alert > li {
+    font-size: small;
+    list-style-position: inside;
+    color: #d10f08;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c5c6c7;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid #c5c6c7;
+    border-radius: 5px;
 }

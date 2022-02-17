@@ -56,8 +56,6 @@ const questionValidators = [
             ]
         });
 
-        console.log(questions[0].content)
-
         res.render('question-search', {
             questions,
             csrfToken: req.csrfToken(),

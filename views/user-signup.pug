@@ -3,16 +3,24 @@ extends layout
 include utils
 
 block content
-    div(class="form-container")
-        +validationErrorSummary(errors)
-        form(action='/users/signup' method='post')
-            +csurf(csrfToken)
-            +field('Username', 'userName', user.userName)
-            +field('Email Address', 'emailAddress', user.emailAddress)
-            +field('Password', 'password', user.password, 'password')
-            +field('Confirm Password', 'confirmPassword', '', 'password')
-            br
-            div(class='submit-container')
-                button(type='submit' class='btn') Sign Up
-            div
-                p: a(href='/users/login') Already have an account?
+    div.splash-box
+        div.splash-container
+            h1 NADQ
+            p.
+                NADQ (Never A Dumb Question), an improvement on Quora, is a social media application
+                that allows users to publicly and shamelessly ask dumb questions to their hearts'
+                content.
+        div(class="form-container")
+            h2 Create an Account
+            +validationErrorSummary(errors)
+            form(action='/users/signup' method='post')
+                +csurf(csrfToken)
+                +field('Username', 'userName', user.userName)
+                +field('Email Address', 'emailAddress', user.emailAddress)
+                +field('Password', 'password', user.password, 'password')
+                +field('Confirm Password', 'confirmPassword', '', 'password')
+                br
+                div(class='submit-container')
+                    button(type='submit' class='btn') Sign Up
+                div.other-option
+                    p: a(href='/users/login') Already have an account?

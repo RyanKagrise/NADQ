@@ -24,11 +24,11 @@ mixin topicQuestions(question)
         userId = #{question.userId}
         topicId = #{question.topicId}
 
-mixin question(question, topic, user)
-    h2 #{question.content}
+mixin question(question)
+    a(href=`/questions/${question.id}`) #{question.content}
     p.
-       topicName = #{topic.name}
-       userName = #{user.userName}
+       topicName = #{question.Topic.name}
+       userName = #{question.User.userName}
 
 mixin topic(topic)
       a(href=href=`/topics/${topic.id}`) #{topic.name}

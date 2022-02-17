@@ -11,7 +11,7 @@ block content
                 that allows users to publicly and shamelessly ask dumb questions to their hearts'
                 content.
         div.form-container
-            h2 LOGIN
+            h2 Login
             +validationErrorSummary(errors)
             form(action='/users/login' method='post')
                 +csurf(csrfToken)

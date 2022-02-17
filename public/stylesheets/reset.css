@@ -26,13 +26,13 @@ span,
 body,
 header,
 nav {
-    font-size: 1rem;
     color: inherit;
     background-color: transparent;
     margin: 0;
     padding: 0;
     outline: 0;
     font-weight: normal;
+    list-style-position: inside;
 }
 
 body {
@@ -65,9 +65,9 @@ h1 {
     flex-direction: column;
     width: 50%;
     border-right: 5px solid #45a29e;
-    padding: 10px;
     text-align: center;
     justify-content: center;
+    padding: 0px 20px;
 }
 
 .splash-container > h1 {
@@ -100,7 +100,9 @@ h1 {
 
 .form-container > h2 {
     font-weight: bold;
+    font-size: 21px;
     margin: 5px;
+    color: #c5c6c7;
 }
 
 .other-option {
@@ -144,7 +146,29 @@ h1 {
     box-sizing: border-box;
 }
 
-.alert {
-    width: 80%;
+.alert{
     margin-bottom: 10px;
+    overflow: auto;
+    font-size: small;
+    color: #d10f08;
+}
+
+.alert > li {
+    font-size: small;
+    list-style-position: inside;
+    color: #d10f08;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c5c6c7;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid #c5c6c7;
+    border-radius: 5px;
 }

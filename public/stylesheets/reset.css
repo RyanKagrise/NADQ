@@ -1,6 +1,6 @@
 body {
     padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "apercu", sans-serif;
 }
 
 a {
@@ -39,9 +39,38 @@ h1 {
     font-size: 2rem;
 }
 
+.splash-box {
+    display: flex;
+    height: 40%;
+    width: 50%;
+    border: 1px solid black;
+
+    box-sizing: border-box;
+    margin: auto;
+    padding: 10px;
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.splash-container > h1 {
+    font-weight: bold;
+}
+
 .form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.splash-container > h2 {
+    font-weight: bold;
+}
+
+.splash-container > p {
+    font-size: small;
 }
 
 .login-link {

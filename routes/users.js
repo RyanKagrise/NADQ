@@ -116,8 +116,6 @@ asyncHandler(async (req, res) => {
 
     const validatorErrors = validationResult(req);
 
-    console.log(req.body)
-
     if (validatorErrors.isEmpty()) {
         const hashedPassword = await bcrypt.hash(password, 12);
         user.hashedPassword = hashedPassword;
@@ -196,12 +194,12 @@ router.post('/login', csrfProtection, loginValidator, asyncHandler(async (req, r
         errors,
         csrfToken: req.csrfToken(),
     });
-}))
+}));
 
 
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     logoutUser(req, res);
     res.redirect('/users/login');
-})
+});
 
 module.exports = router;

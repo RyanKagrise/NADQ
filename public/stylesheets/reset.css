@@ -266,15 +266,26 @@ h1 {
     text-decoration: none;
 }
 
-
-.ask-question-container {
-    padding: 125px;
-    box-sizing: border-box;
+.ask-question-splash {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    height: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
 }
+
+.question-text {
+    height: 300px;
+    width: 300px;
+    font: 30px "apercu", sans-serif;
+    border: .5rem solid #45A29E;
+    border-radius: 5%;
+    margin-top: 20px;
+}
+
 
 .title-ask {
     color: #66fcf1;
@@ -292,13 +303,6 @@ h1 {
 
 }
 
-.question-text {
-    height: 300px;
-    width: 300px;
-    font: 30px "apercu", sans-serif;
-    border: .5rem solid #45A29E;
-    border-radius: 5%;
-}
 
 .select-menu {
     margin: 20px;

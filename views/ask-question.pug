@@ -6,7 +6,7 @@ block name
   div(class="ask-question-container")
     h1.title-ask Ask a Question!
     +validationErrorSummary(errors)
-    div(class='splash-box ask-questin-splash')
+    div(class='splash-box ask-question-splash')
       form(action=`/questions` method='post')
         +csurf(csrfToken)
         .text-ask-box

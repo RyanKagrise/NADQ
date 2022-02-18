@@ -9,9 +9,13 @@ append head
   script(src="/javascripts/index.js" type="module")
 
 block  name
-    h1= title
+    div.home-title-text
+        h1= title
+
     div(class='topics-container')
-        ul.topic-list
-            each item in topics
-                li.topic-item
-                    +topic(item)
+        div.topic-title
+            h1 Topics
+            ul.topic-list
+                each item in topics
+                    li.topic-item
+                        +topic(item)

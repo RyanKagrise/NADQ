@@ -18,7 +18,6 @@ block content
             div.search-container
                 input(type='search' placeholder='Search Questions Dummy' name='search' id='search' class='search-specific')
         form(class='logout-form' action='/users/logout' method='post')
-            +csurf(csrfToken)
             div.logout-nav-div
                 button.logout-button
                     img(src='../images/logout.png' class='logout-logo')

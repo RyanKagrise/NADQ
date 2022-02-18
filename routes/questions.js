@@ -15,7 +15,7 @@ const db = require("../db/models");
 const router = express.Router();
 
 
-router.get('/', csrfProtection, asyncHandler(async(req, res) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
     const topics = await db.Topic.findAll();
 
@@ -28,17 +28,17 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
 
 const questionValidators = [
     check("content")
-        .exists({
-            checkFalsy: true
-        })
-        .withMessage("Please provide a value for the questionPrompt field!")
-        .isLength({
-            max: 255
-        })
-        .withMessage("The question must be less than 255 characters dummy!"),
-    ];
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Please provide a value for the questionPrompt field!")
+    .isLength({
+        max: 255
+    })
+    .withMessage("The question must be less than 255 characters dummy!"),
+];
 
-    router.post('/search', csrfProtection,
+router.post('/search', csrfProtection,
     asyncHandler(async (req, res) => {
         const {
             search,
@@ -62,37 +62,41 @@ const questionValidators = [
         });
     }));
 
-    router.post('/', csrfProtection, questionValidators, asyncHandler(async (req, res) => {
+router.post('/', csrfProtection, questionValidators,
+    asyncHandler(async (req, res) => {
         const {
             content,
             topicSelector,
         } = req.body;
 
+        console.log(req.body);
+
         const question = db.Question.build({
             content,
             topicId: topicSelector,
             userId: res.locals.user.id,
-        })
+        });
 
 
         const validatorErrors = validationResult(req);
 
-        if(validatorErrors.isEmpty()) {
+        if (validatorErrors.isEmpty()) {
             await question.save();
             res.redirect(`/questions/${question.id}`)
         } else {
             const errors = validatorErrors.array().map((error => error.msg))
 
-        console.log(errors)
+            const topics = await db.Topic.findAll();
 
-        res.render('ask-question', {
-            question,
-            errors,
-            csrfToken: req.csrfToken(),
-        })
-    }
+            res.render('ask-question', {
+                question,
+                errors,
+                topics,
+                csrfToken: req.csrfToken(),
+            })
+        }
 
-}))
+    }))
 
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = req.params.id;

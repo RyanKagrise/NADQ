@@ -4,11 +4,18 @@ include utils
 
 block content
     nav(class='nav-bar')
-        a(href='/') Home
-        a(href='/questions') Questions
+        .nav-title NADQ
+        a(href='/')
+            div.home-logo
+                img(src='../images/home-logo.png' class='home-logo')
+        a(href='/questions')
+            div.home-logo
+                img(src='../images/question-logo.png' class='question-logo')
         form(class='search-bar' action='/questions/search' method='post')
             +csurf(csrfToken)
-            input(type='search' placeholder='Search Questions Dummy' name='search' id='search')
-        a(href='/users/logout') Log Out
+            input(type='search' placeholder='Search Questions Dummy' name='search' id='search' class='search-specific')
+        a(href='/users/logout')
+            div.home-logo
+                img(src='../images/logout.png' class='logout-logo')
     h3.page-title #{pageTitle}
     block name

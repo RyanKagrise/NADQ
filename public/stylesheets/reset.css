@@ -138,12 +138,43 @@ h1 {
 .nav-bar {
     display: flex;
     padding: 10px 0px;
-    height: 45px;
+    height: 60px;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
     border: 1px solid black;
     margin-bottom: 5px;
     box-sizing: border-box;
+    background-color: #c5c6c7;
+}
+
+.nav-title {
+    font: 40px "apercu",sans-serif;
+    color: #66fcf1;
+    font-weight: bold;
+}
+
+.logout-logo {
+    height: 45px;
+    width: 45px;
+    mix-blend-mode: multiply;
+}
+
+.question-logo {
+    height: 30px;
+    width: 30px;
+    mix-blend-mode: multiply;
+    margin-top: 5px;
+}
+.home-logo {
+    height: 45px;
+    width: 45px;
+    mix-blend-mode: multiply;
+}
+
+.search-specific {
+    display: flex;
+    height: 35px;
+    font: 15px "apercu", sans-serif;
 }
 
 .alert{

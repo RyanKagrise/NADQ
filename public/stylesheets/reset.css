@@ -47,6 +47,14 @@ h1 {
     font-size: 4rem;
 }
 
+.button {
+    height: 40px;
+    width: 80px;
+    border: .5rem solid #45A29E;
+    font: 15px "apercu", sans-serif;
+    font-weight: bold;
+}
+
 .splash-box {
     display: flex;
     height: 50%;
@@ -257,23 +265,29 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: centers;
+    align-items: center;
 
 }
 
 .question-text {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+    font: 30px "apercu", sans-serif;
+    border: .5rem solid #45A29E;
 }
 
 .select-menu {
     margin: 20px;
-    height: 20px;
+    height: 40px;
     width: 200px;
+    font: 20px "apercu", sans-serif;
+    font-weight: bold;
+    border: .5rem solid #45A29E;
 }
 
 .add-question {
     margin: 20px;
     padding: 5px;
     border-radius: 10%;
+
 }

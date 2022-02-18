@@ -6,17 +6,19 @@ block content
     nav(class='nav-bar')
         .nav-title NADQ
         a(href='/questions')
-            div.home-logo
+            div.question-nav-div
                 img(src='../images/question-logo.png' class='question-logo')
         a(href='/')
-            div.home-logo
+            div.home-nav-div
                 img(src='../images/home-logo.png' class='home-logo')
         form(class='search-bar' action='/questions/search' method='post')
             +csurf(csrfToken)
             div.search-container
                 input(type='search' placeholder='Search Questions Dummy' name='search' id='search' class='search-specific')
-        a(href='/users/logout')
-            div.home-logo
-                img(src='../images/logout.png' class='logout-logo')
+        form(class='logout-form' action='/users/logout' method='post')
+            +csurf(csrfToken)
+            div.logout-nav-div
+                button.logout-button
+                    img(src='../images/logout.png' class='logout-logo')
     h3.page-title #{pageTitle}
     block name

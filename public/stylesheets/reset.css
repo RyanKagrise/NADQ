@@ -154,7 +154,6 @@ h1 {
     margin-bottom: 5px;
     box-sizing: border-box;
     background-color: #c5c6c7;
-    position: aboslute;
 }
 
 .nav-title-text {
@@ -162,21 +161,12 @@ h1 {
     color: #66fcf1;
     font-weight: bold;
     -webkit-text-stroke: 1px #0b0c10;
+    margin-left: 1rem;
 }
 
 .title-nadq {
     text-decoration: none;
-}
-
-.logout-logo {
-    height: 30px;
-    width: 30px;
-    mix-blend-mode: multiply;
-}
-
-.logout-button {
-    border: none;
-    outline: none;
+    flex-shrink: 0;
 }
 
 .question-logo {
@@ -184,14 +174,38 @@ h1 {
     width: 25px;
     mix-blend-mode: multiply;
     margin-top: 5px;
+    flex-shrink: 0;
+    margin: 5px 1rem 0px 1rem;
 }
 .home-logo {
     height: 35px;
     width: 35px;
     mix-blend-mode: multiply;
+    margin: 0px 1rem 0px 0px;
+}
+
+.logout-logo {
+    height: 30px;
+    width: 30px;
+    mix-blend-mode: multiply;
+    flex-shrink: 0;
+    margin: 0px 1rem;
+}
+
+button.logout-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    outline: none;
+}
+
+.search-bar {
+    flex-grow: 1;
+    max-width: 750px;
 }
 
 .search-specific {
+    width: 100%;
     height: 35px;
     margin: -4px;
     font: 15px "apercu", sans-serif;
@@ -234,22 +248,20 @@ h1 {
 }
 
 .topics-container {
-    width: 100%;
-    height: 500px;
+    width: 90%;
+    height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 10%;
+    margin-left: 5%;
     box-sizing: border-box;
 }
 
 .topic-title {
-    margin: 20px;
     font: 25px "apercu", sans-serif;
     font-weight: bold;
     text-decoration: none;
     color: #c5c6c7;
-    width: 300px;
 }
 
 .topic-title > h1 {
@@ -258,13 +270,19 @@ h1 {
     color: #c5c6c7;
 }
 
-.topic-list {
-    padding: 10px 0px;
-    text-decoration: none;
+.topic-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
-.topic-item {
-    padding: 10px 0px;
+.topic-link {
+    border: 0.5rem solid #0b0c10;
+    width: 150px;
+    padding: 3px 0px;
+    margin: 0.5rem 0px;
+    box-sizing: border-box;
+    background-color: #0b0c10;
 }
 
 .topic-item > a {

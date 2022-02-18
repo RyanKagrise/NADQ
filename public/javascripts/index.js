@@ -1,13 +1,6 @@
 
 window.addEventListener('DOMContentLoaded', (e) => {
-    const logoutButton = document.querySelector('.logout-button');
     const answerButtons = document.querySelectorAll('.answer-button');
-
-    logoutButton.addEventListener("click", (event) => {
-        delete document.cookie;
-    })
-
-
 
     for (let i = 0; i < answerButtons.length; i++) {
         answerButtons[i].addEventListener("click", (event) => {

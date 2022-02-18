@@ -4,8 +4,8 @@ include utils
 
 block name
     +csurf(csrfToken)
-    div(id=`question-${questions.id}` class="question-container")
-        +question(questions)
-        if user.id != currentUserId
+    div(id=`question-${question.id}` class="question-container")
+        +question(question)
+        if question.User.id != currentUserId
             button.answer-button Answer
             div#answer-block

@@ -3,7 +3,12 @@ extends nav-bar
 include utils
 
 block name
+    h1.search-title Search Results Dummy!
+
     ul
+        if questions.length == 0
+            li  There were no results from your query
+
         each question in questions
             li(class='question-block')
                 +question(question)

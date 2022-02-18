@@ -5,12 +5,12 @@ include utils
 block content
     nav(class='nav-bar')
         .nav-title NADQ
-        a(href='/')
-            div.home-logo
-                img(src='../images/home-logo.png' class='home-logo')
         a(href='/questions')
             div.home-logo
                 img(src='../images/question-logo.png' class='question-logo')
+        a(href='/')
+            div.home-logo
+                img(src='../images/home-logo.png' class='home-logo')
         form(class='search-bar' action='/questions/search' method='post')
             +csurf(csrfToken)
             div.search-container

@@ -13,7 +13,8 @@ block content
                 img(src='../images/question-logo.png' class='question-logo')
         form(class='search-bar' action='/questions/search' method='post')
             +csurf(csrfToken)
-            input(type='search' placeholder='Search Questions Dummy' name='search' id='search' class='search-specific')
+            div.search-container
+                input(type='search' placeholder='Search Questions Dummy' name='search' id='search' class='search-specific')
         a(href='/users/logout')
             div.home-logo
                 img(src='../images/logout.png' class='logout-logo')

@@ -6,13 +6,14 @@ block name
   div(class="ask-question-container")
     h1.title-ask Ask a Question!
     +validationErrorSummary(errors)
-    form(action=`/questions` method='post')
-      +csurf(csrfToken)
-      .text-ask-box
-        textarea(class='question-text' type='text' name='content' placeholder="Type your dumb question here!")
-        br
-        select(name='topicSelector' class='select-menu' required)
-          each topic in topics
-            option(value=topic.id) #{topic.name}
-        br
-        button(class='button add-question' type='submit') Submit
+    div(class='splash-box ask-questin-splash')
+      form(action=`/questions` method='post')
+        +csurf(csrfToken)
+        .text-ask-box
+          textarea(class='question-text' type='text' name='content' placeholder="Type your dumb question here!")
+          br
+          select(name='topicSelector' class='select-menu' required)
+            each topic in topics
+              option(value=topic.id) #{topic.name}
+          br
+          button(class='button add-question-button' type='submit') Submit

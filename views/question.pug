@@ -7,5 +7,5 @@ block name
     div(id=`question-${question.id}` class="question-container")
         +question(question)
         if question.User.id != currentUserId
-            button.answer-button Answer
+            button(id=`answer-${question.id}`).answer-button Answer
             div#answer-block

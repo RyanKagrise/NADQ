@@ -11,14 +11,14 @@ const {
     Op
 } = require("sequelize");
 const db = require("../db/models");
+const answersRouter = require('./answers');
 
 const router = express.Router();
 
+router.use('/:id(\\d+)/answers', answersRouter);
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-
     const topics = await db.Topic.findAll();
-
 
     res.render('ask-question', {
         topics,

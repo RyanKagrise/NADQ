@@ -14,9 +14,7 @@ const db = require("../db/models");
 
 const router = express.Router();
 
-
-
-router.post('/', csrfProtection, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const {
         content,
         question
@@ -27,6 +25,10 @@ router.post('/', csrfProtection, asyncHandler(async (req, res) => {
         userId: req.params.user.id,
         questionId: question.id
     });
+
+    return answer;
 }));
-// last_el = [1, 2, 3, 4][-1]
-// last_el = 4
+
+
+
+module.exports = router;

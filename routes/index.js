@@ -14,8 +14,17 @@ const {
 /* GET home page. */
 router.get('/', requireAuth, csrfProtection,
     asyncHandler(async (req, res, next) => {
+        const topics = await db.Topic.findAll({
+            include: {
+                model: db.Question,
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+                limit: 3
+            }
+        });
 
-        const topics = await db.Topic.findAll();
+        console.log(topics[1].Questions.length)
 
         res.render('home', {
             title: 'Never A Dumb Question!',

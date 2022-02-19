@@ -3,8 +3,8 @@ extends nav-bar
 include utils
 
 block name
-    h1 topic name = #{topicName}
-    h3 topic id = #{topicId}
+    div.home-title-text
+        h1.topic-title-center Topic Page
     ul.list-block-class
         each question in questions
             li(class='question-block search-result-block')

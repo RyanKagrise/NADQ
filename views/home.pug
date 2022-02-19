@@ -20,10 +20,11 @@ block  name
                     li.topic-item
                         +topic(item)
 
-    div.topic-question-container
+    div(class='list-block-class layout-center')
         each topic in topics
-            h1 #{topic.name}
-            ul.question-list
-                each question in topic.Questions
-                    li
-                        +topicQuestions(question)
+            div(class='question-block search-result-block')
+                h1 #{topic.name}
+                ul.question-list
+                    each question in topic.Questions
+                        li
+                            +topicQuestions(question)

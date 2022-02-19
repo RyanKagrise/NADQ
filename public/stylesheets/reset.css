@@ -258,7 +258,6 @@ button.logout-button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 5%;
     box-sizing: border-box;
 }
 
@@ -270,10 +269,18 @@ button.logout-button {
 }
 
 .topic-title > h1 {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     font: 42px "apercu", sans-serif;
     font-weight: bold;
     color: #66fcf1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.topic-list {
+    position: absolute;
+    left: 0px;
+    top: 250px;
 }
 
 .topic-item {
@@ -297,6 +304,11 @@ button.logout-button {
 
 .topic-item > a {
     text-decoration: none;
+}
+
+.topic-title-center {
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .ask-question-splash {
@@ -445,4 +457,11 @@ li > p {
     border-radius: 5%;
     display: flex;
     flex-direction: column;
+}
+
+.layout-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

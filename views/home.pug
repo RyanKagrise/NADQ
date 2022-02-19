@@ -19,3 +19,11 @@ block  name
                 each item in topics
                     li.topic-item
                         +topic(item)
+
+    div.topic-question-container
+        each topic in topics
+            h1 #{topic.name}
+            ul.question-list
+                each question in topic.Questions
+                    li
+                        +question(question)

@@ -28,8 +28,8 @@ router.get('/', requireAuth, csrfProtection,
             ]
         });
 
-        console.log(topics[1].Questions[0].User.userName)
-        console.log(topics[1].name)
+        // console.log(topics[1].Questions[0].User.userName)
+        // console.log(topics[1].name)
 
         res.render('home', {
             title: 'Never A Dumb Question!',

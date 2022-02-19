@@ -19,8 +19,7 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
 mixin topicQuestions(question)
     a(href=`/questions/${question.id}`) #{question.content}
     p.
-        Topic: #{question.topicId}
-        Username: #{question.userId}
+       Username: #{question.User.userName}
 
 mixin question(question)
     a(href=`/questions/${question.id}`) #{question.content}

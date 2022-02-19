@@ -5,8 +5,8 @@ include utils
 block name
     +csurf(csrfToken)
     div.question-results-title
-        h1  Question Result Dummy!
-    div(id=`question-${question.id}` class="question-container")
+        h1.search-results-title  Question Result Dummy!
+    div(id=`question-${question.id}` class="question-block search-result-block")
         +question(question)
         if question.User.id != currentUserId
             button(id=`answer-${question.id}`).answer-button Answer

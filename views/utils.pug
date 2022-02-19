@@ -17,19 +17,19 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
 
 mixin topicQuestions(question)
-    a(href=`/questions/${question.id}`) content = #{question.content}
+    a(href=`/questions/${question.id}`) #{question.content}
     p.
-        userId = #{question.userId}
-        topicId = #{question.topicId}
+       Username: #{question.User.userName}
 
 mixin question(question)
     a(href=`/questions/${question.id}`) #{question.content}
     p.
-       topicName = #{question.Topic.name}
-       userName = #{question.User.userName}
+       Topic: #{question.Topic.name}
+    p.
+       Username: #{question.User.userName}
 
 mixin topic(topic)
-      a(href=href=`/topics/${topic.id}`) #{topic.name}
+      a.topic-link(href=href=`/topics/${topic.id}`) #{topic.name}
 
 
 mixin csurf(csrfToken)

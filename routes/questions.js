@@ -11,14 +11,14 @@ const {
     Op
 } = require("sequelize");
 const db = require("../db/models");
+const answersRouter = require('./answers');
 
 const router = express.Router();
 
+router.use('/:id(\\d+)/answers', answersRouter);
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-
     const topics = await db.Topic.findAll();
-
 
     res.render('ask-question', {
         topics,
@@ -100,7 +100,7 @@ router.post('/', csrfProtection, questionValidators,
 
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = req.params.id;
-    const questions = await db.Question.findOne({
+    const question = await db.Question.findOne({
         where: {
             id: questionId
         },
@@ -113,7 +113,7 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const currentUserId = res.locals.user.id;
 
     res.render('question', {
-        questions,
+        question,
         currentUserId,
         csrfToken: req.csrfToken(),
     })

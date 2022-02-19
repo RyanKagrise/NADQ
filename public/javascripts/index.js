@@ -1,20 +1,11 @@
 
 window.addEventListener('DOMContentLoaded', (e) => {
-    const logoutButton = document.querySelector('.logout-button');
     const answerButtons = document.querySelectorAll('.answer-button');
-
-    logoutButton.addEventListener("click", (event) => {
-        delete document.cookie;
-    })
-
-
 
     for (let i = 0; i < answerButtons.length; i++) {
         answerButtons[i].addEventListener("click", (event) => {
-            let pathUrl = event.path
-            let questionId = pathUrl[pathUrl.length - 1];
-            console.log(pathUrl);
-            console.log(pathUrl[4])
+            const questionId = event.target.id.split('-')[1];
+            console.log(questionId);
             answerButtons[i].style.display = "none";
             const answerBlock = document.getElementById("answer-block");
             answerBlock.innerHTML = `
@@ -31,7 +22,11 @@ window.addEventListener('DOMContentLoaded', (e) => {
             answerButton.addEventListener("click", async (e) => {
                 answerBlock.innerHTML = "";
                 const questionContainer = document.getElementById("question-container");
-                const res = fetch('/questions/:id/answers' /*post*/)
+                const res = await fetch(`/questions/${questionId}/answers`, {
+                    method: 'post',
+                });
+
+                console.log(res);
             });
         });
     }

@@ -365,7 +365,7 @@ button.logout-button {
     color: #66fcf1;
     font: 4rem "apercu", sans-serif;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     text-shadow: -1px 1px 0 #c5c6c7;
     padding-top: 25px;
     box-sizing: border-box;
@@ -414,6 +414,7 @@ li > p {
     border-radius: 5%;
     display: flex;
     flex-direction: column;
+    width: 500px;
 }
 
 .question-results-title {
@@ -424,4 +425,24 @@ li > p {
     text-shadow: -1px 1px 0 #c5c6c7;
     padding-top: 25px;
     box-sizing: border-box;
+}
+
+.list-block-class {
+    padding: 15px;
+    width: 500px;
+}
+
+.question-block {
+    border: 0.4rem solid #45A29E;
+    font: 20px "apercu", sans-serif;
+    color: #c5c6c7;
+    background-color: #0b0c10;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 50px 0px;
+    text-decoration: none;
+    list-style-type: none;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
 }

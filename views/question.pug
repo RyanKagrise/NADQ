@@ -4,10 +4,11 @@ include utils
 
 block name
     +csurf(csrfToken)
-    div.question-results-title
-        h1  Question Result Dummy!
-    div(id=`question-${questions.id}` class="question-container")
-        +question(questions)
-        if user.id != currentUserId
-            button.answer-button Answer
-            div#answer-block
+    div
+        h1.search-results-title  Question Result Dummy!
+    div.list-block-class
+        div(id=`question-${questions.id}` class="question-block search-result-block")
+            +question(questions)
+            if user.id != currentUserId
+                button.answer-button Answer
+                div#answer-block

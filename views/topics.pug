@@ -5,7 +5,7 @@ include utils
 block name
     h1 topic name = #{topicName}
     h3 topic id = #{topicId}
-    ul
+    ul.list-block-class
         each item in questions
-            li(class='question-block')
+            li(class='question-block search-result-block')
                 +topicQuestions(item)

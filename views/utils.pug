@@ -25,11 +25,12 @@ mixin topicQuestions(question)
 mixin question(question)
     a(href=`/questions/${question.id}`) #{question.content}
     p.
-       topicName = #{question.Topic.name}
-       userName = #{question.User.userName}
+       Topic: #{question.Topic.name}
+    p.
+       Username: #{question.User.userName}
 
 mixin topic(topic)
-      a(href=href=`/topics/${topic.id}`) #{topic.name}
+      a.topic-link(href=href=`/topics/${topic.id}`) #{topic.name}
 
 
 mixin csurf(csrfToken)

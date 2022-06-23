@@ -196,6 +196,34 @@ router.post('/login', csrfProtection, loginValidator, asyncHandler(async (req, r
     });
 }));
 
+router.post('/login-demo', csrfProtection, asyncHandler(async (req, res) => {
+    const email = "demo@aa.io";
+    const password = "password"
+    let errors = []
+
+    try {
+      const user = await db.User.findOne({ where: { emailAddress: email } });
+      if (user !== null) {
+        const passwordCheck = await bcrypt.compare(password, user.hashedPassword.toString());
+        
+        if (passwordCheck) {
+          loginUser(req, res, user)
+          return res.redirect(`/`)
+        }
+      }
+
+      errors.push('Login failed for the provided email address and password')
+    } catch (err) {
+        console.log(err)
+      errors = err.errors.map(error => error.message)
+    }
+
+    res.render('users/user-login', {
+      errors,
+      email,
+      token: req.csrfToken()
+    })
+  }))
 
 router.post('/logout', (req, res) => {
     logoutUser(req, res);

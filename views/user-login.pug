@@ -19,5 +19,9 @@ block content
                 +field('Password', 'password', null, 'password')
                 div(class='submit-container')
                     button(type='submit' class='btn') Login
+            form(action='/users/login-demo' method='post')
+                +csurf(csrfToken)
+                div(class='submit-container')
+                    button(type='submit' class='btn') Demo Login
                 div.other-option
                     p: a(href='/users/signup') Don't have an account?
